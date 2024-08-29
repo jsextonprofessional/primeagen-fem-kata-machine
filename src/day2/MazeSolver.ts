@@ -14,6 +14,7 @@ const walk = (maze: string[], wall: string, current: Point, end: Point, seen: bo
   }
 
   // on a wall
+  // ORDER MATTERS ie current.y must come before current.x
   if (maze[current.y][current.x] === wall) {
     return false;
   }

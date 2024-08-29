@@ -14,7 +14,8 @@ const walk = (maze: string[], wall: string, current: Point, end: Point, seen: bo
   }
 
   // on a wall
-  if (maze[current.x][current.y] === wall) {
+  // ORDER MATTERS ie current.y must come before current.x
+  if (maze[current.y][current.x] === wall) {
     return false;
   }
 
@@ -31,7 +32,7 @@ const walk = (maze: string[], wall: string, current: Point, end: Point, seen: bo
 
   // 3 (should be 2?) recurse
   // pre
-  seen[current.x][current.y] = true;
+  seen[current.y][current.x] = true;
   path.push(current);
   // recurse
   for (let i = 0; i < directions.length; ++i) {

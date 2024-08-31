@@ -66,6 +66,7 @@ export default class DoublyLinkedList<T> {
 
     node.prev = this.tail;
     this.tail.next = node;
+    this.tail = node;
   }
 
   remove(item: T): T | undefined {
@@ -116,11 +117,11 @@ export default class DoublyLinkedList<T> {
     }
 
     if (node === this.head) {
-      this.head === node.next;
+      this.head = node.next;
     }
 
     if (node === this.tail) {
-      this.tail === node.prev;
+      this.tail = node.prev;
     }
 
     node.prev = node.next = undefined;

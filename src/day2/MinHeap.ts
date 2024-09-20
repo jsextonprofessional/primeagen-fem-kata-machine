@@ -29,6 +29,18 @@ export default class MinHeap {
     return out;
   }
 
+  private parent(idx: number): number {
+    return Math.floor((idx - 1) / 2);
+  }
+
+  private leftChild(idx: number): number {
+    return idx * 2 + 1;
+  }
+
+  private rightChild(idx: number): number {
+    return idx * 2 + 2;
+  }
+
   private heapifyDown(idx: number): void {
     if (idx >= this.length) {
       return;
@@ -45,11 +57,11 @@ export default class MinHeap {
     const rightValue = this.data[rightIdx];
     const value = this.data[idx];
 
-    if (leftValue > rightValue && value > rightValue) {
+    if ((leftValue || value) > rightValue) {
       this.data[idx] = rightValue;
       this.data[rightIdx] = value;
       this.heapifyDown(rightIdx);
-    } else if (rightValue > leftValue && value > leftValue) {
+    } else if ((rightValue || value) > leftValue) {
       this.data[idx] = leftValue;
       this.data[leftIdx] = value;
       this.heapifyDown(leftIdx);
@@ -72,15 +84,5 @@ export default class MinHeap {
     }
   }
 
-  private parent(idx: number): number {
-    return Math.floor((idx - 1) / 2);
-  }
 
-  private leftChild(idx: number): number {
-    return idx * 2 + 1;
-  }
-
-  private rightChild(idx: number): number {
-    return idx * 2 + 2;
-  }
 }

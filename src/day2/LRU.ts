@@ -66,8 +66,7 @@ export default class LRU<K, V> {
     this.length--;
   }
 
-
-  update(key: K, value: V): void {
+  update = (key: K, value: V): void => {
     // does it exist?
     let node = this.lookup.get(key);
     // if it doesn't we need to insert
@@ -88,7 +87,7 @@ export default class LRU<K, V> {
       node.value = value;
     }
   }
-  get(key: K): V | undefined {
+  get = (key: K): V | undefined => {
     // check the cache for existence
     const node = this.lookup.get(key);
     if (!node) {
